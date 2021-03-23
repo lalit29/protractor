@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - "8"
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+  - npm install -g protractor
+
+before_script:
+  - webdriver-manager update --versions.chrome=73.0.3683.86
+  - webdriver-manager start --versions.chrome=73.0.3683.86 &
+  - sleep 3
+
+script:
+  - protractor headless_config.js
+
+notifications:  
+  email:  
+    recipients:  
+    - taimoor_pasha2009@outlook.com  
+    on_success: always  
+    on_failure: always
